@@ -10,6 +10,9 @@ export class DashboardPage {
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
   }
 
+  async navigateToClients() {
+    await this.page.locator('#app > div > div > div:nth-child(2) > a').click();
+  }
    async performLogout() {
     await this.logoutButton.click();
   }
