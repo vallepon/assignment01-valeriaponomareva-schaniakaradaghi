@@ -9,10 +9,10 @@ export class ClientPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.nameInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
-    this.emailInput = page.locator('input[type="email"]');
-    this.phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
-    this.saveButton = page.getByText('Save');
+    this.nameInput = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
+    this.emailInput = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=email]');
+    this.phoneInput = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');
+    this.saveButton = page.locator('#app > div > div.actions > a.btn.blue')
   }
 
   async createClient(fullName: string, userEmail: string, userPhoneNo: string) {
