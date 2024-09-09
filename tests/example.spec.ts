@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from './pages/login-page';
 import { DashboardPage } from './pages/dashboard-page';
 import { ClientPage } from './pages/client-page';
+import { CreateRoomPage } from './pages/room-page';
 import { faker } from '@faker-js/faker';
 
 test.describe('Test suite 01', () => {
@@ -40,4 +41,23 @@ test.describe('Test suite 01', () => {
     await dashboardpage.performLogout();
     await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible();
   });
+
+  test('Test case 03', async ({ page }) => {
+    const loginpage = new LoginPage(page);
+    const createRoomPage = new CreateRoomPage(page);
+
+
+    await loginpage.goto();
+    await loginpage.performLogin(process.env.TEST_USERNAME!, process.env.TEST_PASSWORD!);
+  
+    // Gå till "Create Room"-sidan
+    await page.goto('http://localhost:3000/room/new');
+  
+    // Fyll i rumsformuläret
+    await createRoomPage.fillOutCreateRoomsForm();
+  
+    // Lägg till en assertion för att kontrollera att rummet skapades
+    await expect(page).toHaveURL('http://localhost:3000/room');
+  });
+
 });
