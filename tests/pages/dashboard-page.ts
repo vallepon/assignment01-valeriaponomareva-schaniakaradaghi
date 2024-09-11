@@ -49,8 +49,12 @@ export class DashboardPage {
 
   }
 
-  async navigateToDeleteClient() {
+  async navigateToDeleteOrEditClient() {
     await this.page.locator('#app > div > div > div:nth-child(2) > a').click();
+
+  }
+  async navigateToDeleteOrEditBill() {
+    await this.page.locator('#app > div > div > div:nth-child(3) > a').click();
 
   }
 

@@ -10,6 +10,7 @@ import { CreateBillPage } from './pages/create-bill-page';
 import { ReservationPage } from './pages/reservation-page';
 import { CreateReservationPage } from './pages/create-reservation-page';
 import { EditClientPage } from './pages/edit-client-page';
+import { EditBillPage } from './pages/edit-bill-page';
 import { faker } from '@faker-js/faker';
 
 
@@ -99,7 +100,7 @@ test('Test case 07', async ({ page }) => {
   const dashboardpage = new DashboardPage(page);
   const clientPage = new ClientPage(page);
 
-  await dashboardpage.navigateToDeleteClient();
+  await dashboardpage.navigateToDeleteOrEditClient();
   await page.waitForTimeout(5000);
 
   await clientPage.deleteClient();
@@ -113,12 +114,25 @@ test('Test case 08', async ({ page }) => {
 
   const userPhoneNo = faker.phone.number();
 
-  await dashboardpage.navigateToDeleteClient();
+  await dashboardpage.navigateToDeleteOrEditClient();
   await page.waitForTimeout(5000);
 
   await clientPage.editClient();
   await editClient.editClientNumber(userPhoneNo);
   await expect(page).toHaveURL('http://localhost:3000/clients');
+});
+
+test('Test case 09', async ({ page }) => {
+  const dashboardpage = new DashboardPage(page);
+  const billPage = new BillPage(page);
+  const editBill = new EditBillPage(page);
+
+  await dashboardpage.navigateToDeleteOrEditBill();
+  await page.waitForTimeout(5000);
+
+  await billPage.editClient();
+  await editBill.editBillValue();
+  await expect(page).toHaveURL('http://localhost:3000/bills');
 });
 
 });
