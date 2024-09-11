@@ -30,8 +30,11 @@ export class CreateReservationPage {
         const startDateString = startDate.toISOString().split('T')[0];
         const endDateString = endDate.toISOString().split('T')[0];
 
-
-
+        await this.startInput.fill(startDateString);
+        await this.endInput.fill(endDateString);        
+        await this.clientSelect.selectOption({ index: 1 });
+        await this.roomSelect.selectOption({ index: 1 });
+        await this.billSelect.selectOption({ index: 1 });
         await this.saveButton.click();
     }
     

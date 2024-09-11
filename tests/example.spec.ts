@@ -82,5 +82,27 @@ test.describe('Test suite 01', () => {
     await createReservationPage.fillOutCreateReservationsForm();
     await expect(page).toHaveURL('http://localhost:3000/reservations');
   });
-  
+
+  test('Test case 06', async ({ page }) => {
+    const dashboardpage = new DashboardPage(page);
+    const roomPage = new RoomPage(page);
+
+    await dashboardpage.navigateToDeleteRoom();
+    await page.waitForTimeout(5000);
+
+    await roomPage.deleteRoom();
+    await expect(page).toHaveURL('http://localhost:3000/rooms');
+}); 
+
+test('Test case 07', async ({ page }) => {
+  const dashboardpage = new DashboardPage(page);
+  const clientPage = new ClientPage(page);
+
+  await dashboardpage.navigateToDeleteClient();
+  await page.waitForTimeout(5000);
+
+  await clientPage.deleteClient();
+  await expect(page).toHaveURL('http://localhost:3000/clients');
+});
+
 });
