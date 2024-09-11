@@ -43,4 +43,15 @@ export class DashboardPage {
   async performLogout() {
     await this.logoutButton.click();
   }
+
+  async navigateToDeleteRoom() {
+    await this.page.locator('#app > div > div > div:nth-child(1) > a').click();
+
+  }
+
+  async navigateToDeleteClient() {
+    await this.page.locator('#app > div > div > div:nth-child(2) > a').click();
+
+  }
+
 }
