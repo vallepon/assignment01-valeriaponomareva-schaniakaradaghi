@@ -5,6 +5,7 @@ export class ClientPage {
   readonly pageName: Locator;
   readonly createClientButton: Locator;
   readonly dots: Locator;
+  readonly edit: Locator;
   readonly deleteClientButton: Locator;
 
   constructor(page: Page) {
@@ -12,6 +13,7 @@ export class ClientPage {
     this.pageName = page.locator('#app > div > h2 > div');
     this.createClientButton = page.locator('#app > div > h2 > a')
     this.dots = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img')
+    this.edit = page.locator('#app > div > div.clients > div > div.menu > a:nth-child(1)')
     this.deleteClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(2)')
   }
 
@@ -25,5 +27,11 @@ export class ClientPage {
   async deleteClient() {
     await this.dots.click();
     await this.deleteClientButton.click();
+  }
+
+  async editClient() {
+    await this.dots.click();
+    await this.edit.click();
+
   }
 }
