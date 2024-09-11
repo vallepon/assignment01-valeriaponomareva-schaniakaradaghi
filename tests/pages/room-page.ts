@@ -25,5 +25,5 @@ export class RoomPage {
     await expect(element).toContainText(number);
     await expect(element).toContainText(floorNumber);
     await expect(element).toContainText(roomPrice);
-  }
+  } */
 }
