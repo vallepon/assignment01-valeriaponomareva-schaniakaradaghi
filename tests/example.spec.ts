@@ -15,7 +15,6 @@ import { faker } from '@faker-js/faker';
 test.beforeEach(async ({ page }) => {
   const loginpage = new LoginPage(page);
   const dashboardpage = new DashboardPage(page);
-
   await loginpage.goto();
   await loginpage.performLogin(process.env.TEST_USERNAME!, process.env.TEST_PASSWORD!);
   await page.waitForTimeout(10000);
