@@ -19,7 +19,7 @@ export class BillPage {
     const element = this.page.locator('#app > div > div.clients > div:nth-last-child(1)');
   }
 
-  async editClient() {
+  async editBill() {
     await this.dots.click();
     await this.edit.click();
 

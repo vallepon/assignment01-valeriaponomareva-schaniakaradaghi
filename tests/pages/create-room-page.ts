@@ -23,7 +23,7 @@ export class CreateRoomPage {
         this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
      }
 
-        async fillOutCreateRoomsForm() {
+        async CreateRooms() {
             const number = faker.number.int({ min: 100, max: 999 }).toString();
             const floorNumber = faker.number.int({ min: 0, max: 10}).toString()
             const roomPrice = faker.number.int({ min: 100000, max: 50000000 }).toString();

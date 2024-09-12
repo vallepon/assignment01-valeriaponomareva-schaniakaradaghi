@@ -16,7 +16,7 @@ export class CreateBillPage {
 
     }
 
-    async fillOutCreateBillsForm() {
+    async CreateBills() {
         const billValue = Math.floor(Number(faker.finance.amount({ min: 1, max: 50000 }))).toString();
         await this.paidCheckbox.click();
         await this.valueInput.fill(billValue, { force: true });

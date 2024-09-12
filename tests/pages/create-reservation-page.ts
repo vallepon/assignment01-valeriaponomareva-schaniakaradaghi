@@ -22,7 +22,7 @@ export class CreateReservationPage {
 
     }
 
-    async fillOutCreateReservationsForm() {
+    async CreateReservations() {
 
         const startDate = faker.date.future();
         const endDate = faker.date.future();

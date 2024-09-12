@@ -23,13 +23,13 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible();
 });
 
-test.describe('Test suite 01', () => {
-  test('Test case 01', async ({ page }) => {
+test.describe('Testers hotel', () => {
+  test('Logout', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     await dashboardpage.performLogout();
   });
 
-  test('Test case 02', async ({ page }) => {
+  test('Create client', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     const clientpage = new ClientPage(page);
     const createclientpage = new CreateClientPage(page);
@@ -46,7 +46,7 @@ test.describe('Test suite 01', () => {
 
   });
 
-  test('Test case 03', async ({ page }) => {
+  test('Create room', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     const roomPage = new RoomPage(page);
     const createRoomPage = new CreateRoomPage(page);
@@ -54,11 +54,11 @@ test.describe('Test suite 01', () => {
     await dashboardpage.navigateToRooms();
     await expect(page.getByRole('heading', { name: 'New Room' })).toBeVisible();
   
-    await createRoomPage.fillOutCreateRoomsForm();
+    await createRoomPage.CreateRooms();
     await expect(page).toHaveURL('http://localhost:3000/rooms');
   });
   
-  test('Test case 04', async ({ page }) => {
+  test('Create bill', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     const billPage = new BillPage(page);
     const createBillPage = new CreateBillPage(page);
@@ -67,12 +67,12 @@ test.describe('Test suite 01', () => {
     await page.waitForTimeout(10000);
     await expect(page.getByRole('heading', { name: 'New Bill' })).toBeVisible();
   
-    await createBillPage.fillOutCreateBillsForm();
+    await createBillPage.CreateBills();
     await billPage.verifyBillDetails();
     await expect(page).toHaveURL('http://localhost:3000/bills');
   });
 
-  test('Test case 05', async ({ page }) => {
+  test('Create reservation', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     const reservationPage = new ReservationPage(page);
     const createReservationPage = new CreateReservationPage(page);
@@ -81,11 +81,11 @@ test.describe('Test suite 01', () => {
     await page.waitForTimeout(5000);
     await expect(page.getByRole('heading', { name: 'New Reservation' })).toBeVisible();
   
-    await createReservationPage.fillOutCreateReservationsForm();
+    await createReservationPage.CreateReservations();
     await expect(page).toHaveURL('http://localhost:3000/reservations');
   });
 
-  test('Test case 06', async ({ page }) => {
+  test('Delete room', async ({ page }) => {
     const dashboardpage = new DashboardPage(page);
     const roomPage = new RoomPage(page);
 
@@ -96,7 +96,7 @@ test.describe('Test suite 01', () => {
     await expect(page).toHaveURL('http://localhost:3000/rooms');
 }); 
 
-test('Test case 07', async ({ page }) => {
+test('Delete client', async ({ page }) => {
   const dashboardpage = new DashboardPage(page);
   const clientPage = new ClientPage(page);
 
@@ -107,7 +107,7 @@ test('Test case 07', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/clients');
 });
 
-test('Test case 08', async ({ page }) => {
+test('Edit client', async ({ page }) => {
   const dashboardpage = new DashboardPage(page);
   const clientPage = new ClientPage(page);
   const editClient = new EditClientPage(page);
@@ -122,7 +122,7 @@ test('Test case 08', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/clients');
 });
 
-test('Test case 09', async ({ page }) => {
+test('Edit bill', async ({ page }) => {
   const dashboardpage = new DashboardPage(page);
   const billPage = new BillPage(page);
   const editBill = new EditBillPage(page);
@@ -130,7 +130,7 @@ test('Test case 09', async ({ page }) => {
   await dashboardpage.navigateToDeleteOrEditBill();
   await page.waitForTimeout(5000);
 
-  await billPage.editClient();
+  await billPage.editBill();
   await editBill.editBillValue();
   await expect(page).toHaveURL('http://localhost:3000/bills');
 });
